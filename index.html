@@ -5,11 +5,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Витрина товаров</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
 </head>
 <body>
-    <h1>Витрина нашего магазина</h1>
-    <div id="product-container"></div>
+    <div id="app">
+        <h1>Витрина нашего магазина</h1>
+        <div id="product-container">
+            <!-- Продукты будут загружены здесь -->
+        </div>
+    </div>
 
-    <script src="script.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Инициализируем Web App
+            const telegramWebApp = new Telegram.WebApp();
+            telegramWebApp.ready();
+
+            // Пример массива товаров, данные могут быть динамически загружены через API
+            var products = [
+                { name: "Товар 1", description: "Описание товара 1", imageUrl: "https://example.com/path_to_image1.jpg" },
+                { name: "Товар 2", description: "Описание товара 2", imageUrl: "https://example.com/path_to_image2.jpg" }
+            ];
+
+            var productContainer = document.getElementById('product-container');
+
+            // Динамически создаем карточки товаров
+            products.forEach(function(product) {
+                var productDiv = document.createElement('div');
+                productDiv.className = 'product';
+                productDiv.innerHTML = `<h2>${product.name}</h2>
+                                         <p>${product.description}</p>
+                                         <img src="${product.imageUrl}" alt="${product.name}" style="width:100%;">`;
+                productContainer.appendChild(productDiv);
+            });
+        });
+    </script>
 </body>
 </html>
