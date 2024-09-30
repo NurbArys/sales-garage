@@ -1,13 +1,13 @@
 from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
-from telegram.ext import Application, CommandHandler, CallbackContext
+from telegram.ext import Application, CommandHandler, ContextTypes
 
 # Функция, обрабатывающая команду /start
-async def start(update: Update, context: CallbackContext):
+async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     # Приветственное сообщение пользователю
     await update.message.reply_text('Привет! Добро пожаловать в наш магазин!')
 
 # Функция, отправляющая сообщение в канал
-async def send_to_channel(context: CallbackContext):
+async def send_to_channel(context: ContextTypes.DEFAULT_TYPE):
     # ID вашего канала
     channel_id = '@sales_garage_atyrau'  # Имя вашего канала
     # Кнопка с ссылкой на витрину
