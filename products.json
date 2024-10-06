@@ -19,5 +19,12 @@
         "category": "Toys",
         "price": "1000",
         "image_url": "https://3.downloader.disk.yandex.kz/preview/076d6bfb7c0c9204181234b2b8b52d491c6e3189c4c3f30c6361f9b129f8dc37/inf/ZdUts_z3sXMp9yWCFCuee_7owwgCyD1g9hL-FMWMNvq5WmryyLb9wvuiir-efzXHE_u8tTLJd3LoaJ3jR9aetQ%3D%3D?uid=542936933&filename=Kukla.jfif&disposition=inline&hash=&limit=0&content_type=image%2Fjpeg&owner_uid=542936933&tknv=v2&size=1920x919"
+    },
+    {
+        "name": "Kukla 3",
+        "description": "sample",
+        "category": "Toys",
+        "price": "1000",
+        "image_url": "https://images.satu.kz/215649016_w640_h320_kukla-reborn-55.jpg"
     }
 ]
