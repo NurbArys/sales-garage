@@ -7,11 +7,13 @@
         "image_url": "https://via.placeholder.com/150"
     },
 
-    [
-        "name": "Kukla",
-        "description": "sample",
-        "category": "Toys",
-        "price": "1000",
-        "image_url": "https://catalog.detmir.st/media/nqpG95o2FgCro8lMa2UwzFEABigzN9BCtnDbhXiUA3w=?preset=site_product_gallery_r1500"
-    }
+[
+  {
+    "name": "Kukla",
+    "description": "Sample description",
+    "category": "Toys",
+    "price": "100",
+    "image_url": "https://link-to-image.jpg"
+  }
 ]
+
