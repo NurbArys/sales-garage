@@ -5,15 +5,5 @@
         "category": "Category1",
         "price": "100",
         "image_url": "https://via.placeholder.com/150"
-    },
-
-[
-  {
-    "name": "Kukla",
-    "description": "Sample description",
-    "category": "Toys",
-    "price": "100",
-    "image_url": "https://link-to-image.jpg"
-  }
+    }
 ]
-
