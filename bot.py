@@ -19,7 +19,7 @@ async def add_product(update: Update, context: CallbackContext):
 # Main function to start the bot
 def main():
     # Your Bot Token from BotFather
-    TOKEN = '7235348489:AAEeHyiYW6B8QB_VXbAGHXmtRAEnlWy-mqk'
+    TOKEN = '7235348489:AAEeK8eAs6TeRPrH-3sn_2f0_ohO54vB_oY'
     
     # Create the Application instance
     application = Application.builder().token(TOKEN).build()
