@@ -117,7 +117,7 @@
             // Function to open a product page with detailed information
             function openProductPage(product) {
                 const productPage = window.open('', '_blank');
-                productPage.document.write(`
+                const productHtml = `
                     <!DOCTYPE html>
                     <html lang="en">
                     <head>
@@ -150,7 +150,9 @@
                         <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
                     </body>
                     </html>
-                `);
+                `;
+                productPage.document.open();
+                productPage.document.write(productHtml);
                 productPage.document.close();
             }
         });
