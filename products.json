@@ -33,5 +33,12 @@
         "category": "toys",
         "price": "1922",
         "image_url": "https://raw.githubusercontent.com/NurbArys/Sales-Garage/main/images/AgACAgIAAxkBAAICDGc1CTmmfTzeBAfq-WdlRG0_sakIAAIx6DEbytWoSQZxflAdHFptAQADAgADbQADNgQ.jpg"
+    },
+    {
+        "name": "kukla 332",
+        "description": "new 332",
+        "category": "toys",
+        "price": "2910",
+        "image_url": "https://cdn.jsdelivr.net/gh/NurbArys/Sales-Garage/images/AgACAgIAAxkBAAICDGc1CTmmfTzeBAfq-WdlRG0_sakIAAIx6DEbytWoSQZxflAdHFptAQADAgADbQADNgQ.jpg"
     }
 ]
