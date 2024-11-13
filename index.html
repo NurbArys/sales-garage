@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
     <style>
         body {
-            background-color: #f0f0f0;
+            background-color: #e9ecef;
         }
         .product-card {
             margin-bottom: 20px;
@@ -37,60 +37,52 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {
-            console.log('DOM fully loaded and parsed');
             const productsContainer = document.getElementById('products');
             const categoryFilter = document.getElementById('categoryFilter');
             
-            try {
-                // Placeholder data for testing
-                const products = [
-                    {
-                        name: "Product 1",
-                        category: "Category A",
-                        price: "100",
-                        description: "This is a description of Product 1.",
-                        image_urls: ["https://via.placeholder.com/150"]
-                    },
-                    {
-                        name: "Product 2",
-                        category: "Category B",
-                        price: "200",
-                        description: "This is a description of Product 2.",
-                        image_urls: ["https://via.placeholder.com/150"]
-                    },
-                    {
-                        name: "Product 3",
-                        category: "Category A",
-                        price: "150",
-                        description: "This is a description of Product 3.",
-                        image_urls: ["https://via.placeholder.com/150"]
-                    }
-                ];
+            // Placeholder data for products
+            const products = [
+                {
+                    name: "Product 1",
+                    category: "Category A",
+                    price: "$100",
+                    description: "This is a description of Product 1.",
+                    image_url: "https://via.placeholder.com/150"
+                },
+                {
+                    name: "Product 2",
+                    category: "Category B",
+                    price: "$200",
+                    description: "This is a description of Product 2.",
+                    image_url: "https://via.placeholder.com/150"
+                },
+                {
+                    name: "Product 3",
+                    category: "Category A",
+                    price: "$150",
+                    description: "This is a description of Product 3.",
+                    image_url: "https://via.placeholder.com/150"
+                }
+            ];
 
-                console.log('Products:', products);
+            // Populate category filter dropdown
+            const categories = new Set(products.map(product => product.category));
+            categories.forEach(category => {
+                const option = document.createElement('option');
+                option.value = category;
+                option.textContent = category;
+                categoryFilter.appendChild(option);
+            });
 
-                // Populate category filter dropdown
-                const categories = new Set(products.map(product => product.category));
-                categories.forEach(category => {
-                    const option = document.createElement('option');
-                    option.value = category;
-                    option.textContent = category;
-                    categoryFilter.appendChild(option);
-                });
+            // Render products initially
+            renderProducts(products);
 
-                // Render products initially
-                renderProducts(products);
-
-                // Filter products based on selected category
-                categoryFilter.addEventListener('change', () => {
-                    const selectedCategory = categoryFilter.value;
-                    const filteredProducts = selectedCategory === 'all' ? products : products.filter(product => product.category === selectedCategory);
-                    renderProducts(filteredProducts);
-                });
-            } catch (error) {
-                console.error('An error occurred while initializing the product list:', error);
-                productsContainer.innerHTML = '<p class="text-danger">An error occurred. Please try reloading the page.</p>';
-            }
+            // Filter products based on selected category
+            categoryFilter.addEventListener('change', () => {
+                const selectedCategory = categoryFilter.value;
+                const filteredProducts = selectedCategory === 'all' ? products : products.filter(product => product.category === selectedCategory);
+                renderProducts(filteredProducts);
+            });
 
             // Function to render products
             function renderProducts(products) {
@@ -102,67 +94,62 @@
                 products.forEach(product => {
                     const productCard = document.createElement('div');
                     productCard.className = 'col-md-4 product-card';
-                    productCard.onclick = () => openProductPage(product);
                     productCard.innerHTML = `
                         <div class="card">
-                            <img src="${product.image_urls[0]}" class="card-img-top" alt="Product Image">
+                            <img src="${product.image_url}" class="card-img-top" alt="Product Image">
                             <div class="card-body">
                                 <h5 class="card-title">${product.name}</h5>
                                 <p class="card-text"><strong>Category:</strong> ${product.category}</p>
                                 <p class="card-text"><strong>Price:</strong> ${product.price}</p>
+                                <button class="btn btn-primary" onclick='openProductPage(${JSON.stringify(product)})'>View Details</button>
                             </div>
                         </div>
                     `;
                     productsContainer.appendChild(productCard);
                 });
             }
-
-            // Function to open a product page with detailed information
-            function openProductPage(product) {
-                console.log('Opening product page for:', product);
-                const productPage = window.open('', '_blank');
-                const productHtml = `
-                    <!DOCTYPE html>
-                    <html lang="en">
-                    <head>
-                        <meta charset="UTF-8">
-                        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                        <title>${product.name}</title>
-                        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
-                        <style>
-                            body {
-                                background-color: #f0f0f0;
-                            }
-                            .image-carousel {
-                                display: flex;
-                                overflow-x: auto;
-                                margin-bottom: 20px;
-                            }
-                            .image-carousel img {
-                                max-width: 150px;
-                                margin-right: 10px;
-                            }
-                        </style>
-                    </head>
-                    <body>
-                        <div class="container mt-5">
-                            <h1>${product.name}</h1>
-                            <div class="image-carousel">
-                                ${product.image_urls.map(url => `<img src="${url}" alt="Product Image">`).join('')}
-                            </div>
-                            <p><strong>Description:</strong> ${product.description}</p>
-                            <p><strong>Category:</strong> ${product.category}</p>
-                            <p><strong>Price:</strong> ${product.price}</p>
-                        </div>
-                        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
-                    </body>
-                    </html>
-                `;
-                productPage.document.open();
-                productPage.document.write(productHtml);
-                productPage.document.close();
-            }
         });
+
+        // Function to open a product page with detailed information
+        function openProductPage(product) {
+            const productPage = window.open('', '_blank');
+            const productHtml = `
+                <!DOCTYPE html>
+                <html lang="en">
+                <head>
+                    <meta charset="UTF-8">
+                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                    <title>${product.name}</title>
+                    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+                    <style>
+                        body {
+                            background-color: #e9ecef;
+                        }
+                        .container {
+                            margin-top: 50px;
+                        }
+                        .product-image {
+                            max-width: 300px;
+                            height: auto;
+                        }
+                    </style>
+                </head>
+                <body>
+                    <div class="container">
+                        <h1>${product.name}</h1>
+                        <img src="${product.image_url}" alt="Product Image" class="product-image mb-4">
+                        <p><strong>Description:</strong> ${product.description}</p>
+                        <p><strong>Category:</strong> ${product.category}</p>
+                        <p><strong>Price:</strong> ${product.price}</p>
+                    </div>
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+                </body>
+                </html>
+            `;
+            productPage.document.open();
+            productPage.document.write(productHtml);
+            productPage.document.close();
+        }
     </script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
