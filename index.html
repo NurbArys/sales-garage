@@ -53,6 +53,11 @@
                     const categories = new Set();
                     products.forEach(product => {
                         categories.add(product.category);
+
+                        // Ensure product.image_urls is an array
+                        if (!Array.isArray(product.image_urls)) {
+                            product.image_urls = [];
+                        }
                     });
 
                     // Populate category filter dropdown
@@ -88,7 +93,8 @@
                 products.forEach(product => {
                     const productCard = document.createElement('div');
                     productCard.className = 'col-md-4 product-card';
-                    const images = Array.isArray(product.image_urls) ? product.image_urls : [];
+                    console.log('Rendering product:', product);
+                    const images = product.image_urls;
                     productCard.innerHTML = `
                         <div class="card">
                             <div class="card-body">
