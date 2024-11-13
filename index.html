@@ -42,8 +42,14 @@
             
             // Fetch products data from GitHub
             fetch('https://cdn.jsdelivr.net/gh/NurbArys/Sales-Garage/products.json')
-                .then(response => response.json())
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! Status: ${response.status}`);
+                    }
+                    return response.json();
+                })
                 .then(products => {
+                    console.log('Products fetched successfully:', products);
                     const categories = new Set();
                     products.forEach(product => {
                         categories.add(product.category);
@@ -66,11 +72,19 @@
                         const filteredProducts = selectedCategory === 'all' ? products : products.filter(product => product.category === selectedCategory);
                         renderProducts(filteredProducts);
                     });
+                })
+                .catch(error => {
+                    console.error('Error fetching products:', error);
+                    productsContainer.innerHTML = '<p class="text-danger">Failed to load products. Please try again later.</p>';
                 });
 
             // Function to render products
             function renderProducts(products) {
                 productsContainer.innerHTML = '';
+                if (products.length === 0) {
+                    productsContainer.innerHTML = '<p class="text-warning">No products available for the selected category.</p>';
+                    return;
+                }
                 products.forEach(product => {
                     const productCard = document.createElement('div');
                     productCard.className = 'col-md-4 product-card';
