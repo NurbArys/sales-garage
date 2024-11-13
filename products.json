@@ -26,5 +26,12 @@
         "category": "Toys",
         "price": "1000",
         "image_url": "https://images.satu.kz/215649016_w640_h320_kukla-reborn-55.jpg"
+    },
+    {
+        "name": "Kukla",
+        "description": "new kukla",
+        "category": "toys",
+        "price": "1922",
+        "image_url": "https://raw.githubusercontent.com/NurbArys/Sales-Garage/main/images/AgACAgIAAxkBAAICDGc1CTmmfTzeBAfq-WdlRG0_sakIAAIx6DEbytWoSQZxflAdHFptAQADAgADbQADNgQ.jpg"
     }
 ]
