@@ -40,5 +40,15 @@
         "category": "toys",
         "price": "2910",
         "image_url": "https://cdn.jsdelivr.net/gh/NurbArys/Sales-Garage/images/AgACAgIAAxkBAAICDGc1CTmmfTzeBAfq-WdlRG0_sakIAAIx6DEbytWoSQZxflAdHFptAQADAgADbQADNgQ.jpg"
+    },
+    {
+        "name": "kukla 23",
+        "description": "new 32",
+        "category": "toys",
+        "price": "2234",
+        "image_urls": [
+            "https://cdn.jsdelivr.net/gh/NurbArys/Sales-Garage/images/AgACAgIAAxkBAAICDGc1CTmmfTzeBAfq-WdlRG0_sakIAAIx6DEbytWoSQZxflAdHFptAQADAgADbQADNgQ.jpg",
+            "https://cdn.jsdelivr.net/gh/NurbArys/Sales-Garage/images/AgACAgIAAxkBAAICCmc1CTB7LtTqxz2KmW8H0l8zgNAjAAIw6DEbytWoSSfc1wV5xa3KAQADAgADeQADNgQ.jpg"
+        ]
     }
 ]
