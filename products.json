@@ -8,5 +8,15 @@
         "image_urls": [
             "https://cdn.jsdelivr.net/gh/NurbArys/Sales-Garage/images/AgACAgIAAxkBAAICCmc1CTB7LtTqxz2KmW8H0l8zgNAjAAIw6DEbytWoSSfc1wV5xa3KAQADAgADeQADNgQ.jpg"
         ]
+    },
+    {
+        "id": 9256,
+        "name": "Velo2",
+        "description": "velo adult",
+        "category": "sport",
+        "price": "232355",
+        "image_urls": [
+            "https://cdn.jsdelivr.net/gh/NurbArys/Sales-Garage/images/AgACAgIAAxkBAAICbWc1MKemd-Zodtx2YykD1K2EkHVJAAIm4TEbWZyoSS3mlmDFE7rQAQADAgADeQADNgQ.jpg"
+        ]
     }
 ]
