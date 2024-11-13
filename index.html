@@ -37,52 +37,60 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {
+            console.log('DOM fully loaded and parsed');
             const productsContainer = document.getElementById('products');
             const categoryFilter = document.getElementById('categoryFilter');
             
-            // Placeholder data for testing
-            const products = [
-                {
-                    name: "Product 1",
-                    category: "Category A",
-                    price: "100",
-                    description: "This is a description of Product 1.",
-                    image_urls: ["https://via.placeholder.com/150"]
-                },
-                {
-                    name: "Product 2",
-                    category: "Category B",
-                    price: "200",
-                    description: "This is a description of Product 2.",
-                    image_urls: ["https://via.placeholder.com/150"]
-                },
-                {
-                    name: "Product 3",
-                    category: "Category A",
-                    price: "150",
-                    description: "This is a description of Product 3.",
-                    image_urls: ["https://via.placeholder.com/150"]
-                }
-            ];
+            try {
+                // Placeholder data for testing
+                const products = [
+                    {
+                        name: "Product 1",
+                        category: "Category A",
+                        price: "100",
+                        description: "This is a description of Product 1.",
+                        image_urls: ["https://via.placeholder.com/150"]
+                    },
+                    {
+                        name: "Product 2",
+                        category: "Category B",
+                        price: "200",
+                        description: "This is a description of Product 2.",
+                        image_urls: ["https://via.placeholder.com/150"]
+                    },
+                    {
+                        name: "Product 3",
+                        category: "Category A",
+                        price: "150",
+                        description: "This is a description of Product 3.",
+                        image_urls: ["https://via.placeholder.com/150"]
+                    }
+                ];
 
-            // Populate category filter dropdown
-            const categories = new Set(products.map(product => product.category));
-            categories.forEach(category => {
-                const option = document.createElement('option');
-                option.value = category;
-                option.textContent = category;
-                categoryFilter.appendChild(option);
-            });
+                console.log('Products:', products);
 
-            // Render products initially
-            renderProducts(products);
+                // Populate category filter dropdown
+                const categories = new Set(products.map(product => product.category));
+                categories.forEach(category => {
+                    const option = document.createElement('option');
+                    option.value = category;
+                    option.textContent = category;
+                    categoryFilter.appendChild(option);
+                });
 
-            // Filter products based on selected category
-            categoryFilter.addEventListener('change', () => {
-                const selectedCategory = categoryFilter.value;
-                const filteredProducts = selectedCategory === 'all' ? products : products.filter(product => product.category === selectedCategory);
-                renderProducts(filteredProducts);
-            });
+                // Render products initially
+                renderProducts(products);
+
+                // Filter products based on selected category
+                categoryFilter.addEventListener('change', () => {
+                    const selectedCategory = categoryFilter.value;
+                    const filteredProducts = selectedCategory === 'all' ? products : products.filter(product => product.category === selectedCategory);
+                    renderProducts(filteredProducts);
+                });
+            } catch (error) {
+                console.error('An error occurred while initializing the product list:', error);
+                productsContainer.innerHTML = '<p class="text-danger">An error occurred. Please try reloading the page.</p>';
+            }
 
             // Function to render products
             function renderProducts(products) {
@@ -111,6 +119,7 @@
 
             // Function to open a product page with detailed information
             function openProductPage(product) {
+                console.log('Opening product page for:', product);
                 const productPage = window.open('', '_blank');
                 const productHtml = `
                     <!DOCTYPE html>
