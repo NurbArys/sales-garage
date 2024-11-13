@@ -3,82 +3,96 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Product Showcase</title>
+    <title>Sales Garage</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            margin: 0;
-            padding: 20px;
+        .product-card {
+            margin-bottom: 20px;
         }
-
-        h1 {
-            text-align: center;
+        .image-carousel {
+            display: flex;
+            overflow-x: auto;
         }
-
-        #product-list {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 20px;
-            margin-top: 20px;
-        }
-
-        .product {
-            background-color: #fff;
-            border-radius: 10px;
-            padding: 15px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s;
-        }
-
-        .product:hover {
-            transform: scale(1.05);
-        }
-
-        img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 5px;
-        }
-
-        .price {
-            font-weight: bold;
-            color: #333;
-            margin-top: 10px;
+        .image-carousel img {
+            max-width: 100px;
+            margin-right: 10px;
         }
     </style>
 </head>
 <body>
-    <h1>Product Showcase</h1>
-    <div id="product-list"></div>
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">Sales Garage</h1>
+        
+        <!-- Category Filter -->
+        <div class="mb-4">
+            <label for="categoryFilter" class="form-label">Filter by Category:</label>
+            <select id="categoryFilter" class="form-select">
+                <option value="all">All</option>
+            </select>
+        </div>
+        
+        <!-- Products List -->
+        <div id="products" class="row"></div>
+    </div>
 
     <script>
-        fetch('https://nurbarys.github.io/sales-garage/products.json')
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Failed to fetch products.json');
-                }
-                return response.json();
-            })
-            .then(data => {
-                const productList = document.getElementById('product-list');
-                data.forEach(product => {
-                    const productElement = document.createElement('div');
-                    productElement.classList.add('product');
-                    productElement.innerHTML = `
-                        <h2>${product.name}</h2>
-                        <p>${product.description}</p>
-                        <p>Category: ${product.category}</p>
-                        <p class="price">Price: $${product.price}</p>
-                        <img src="${product.image_url}" alt="${product.name}">
-                    `;
-                    productList.appendChild(productElement);
+        document.addEventListener("DOMContentLoaded", function() {
+            const productsContainer = document.getElementById('products');
+            const categoryFilter = document.getElementById('categoryFilter');
+            
+            // Fetch products data from GitHub
+            fetch('https://cdn.jsdelivr.net/gh/NurbArys/Sales-Garage/products.json')
+                .then(response => response.json())
+                .then(products => {
+                    const categories = new Set();
+                    products.forEach(product => {
+                        categories.add(product.category);
+                    });
+
+                    // Populate category filter dropdown
+                    categories.forEach(category => {
+                        const option = document.createElement('option');
+                        option.value = category;
+                        option.textContent = category;
+                        categoryFilter.appendChild(option);
+                    });
+
+                    // Render products initially
+                    renderProducts(products);
+
+                    // Filter products based on selected category
+                    categoryFilter.addEventListener('change', () => {
+                        const selectedCategory = categoryFilter.value;
+                        const filteredProducts = selectedCategory === 'all' ? products : products.filter(product => product.category === selectedCategory);
+                        renderProducts(filteredProducts);
+                    });
                 });
-            })
-            .catch(error => {
-                console.error('Error loading products:', error);
-                document.getElementById('product-list').innerHTML = '<p>Failed to load products. Please try again later.</p>';
-            });
+
+            // Function to render products
+            function renderProducts(products) {
+                productsContainer.innerHTML = '';
+                products.forEach(product => {
+                    const productCard = document.createElement('div');
+                    productCard.className = 'col-md-4 product-card';
+                    productCard.innerHTML = `
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">${product.name}</h5>
+                                <p class="card-text">${product.description}</p>
+                                <p class="card-text"><strong>Category:</strong> ${product.category}</p>
+                                <p class="card-text"><strong>Price:</strong> ${product.price}</p>
+                                <div class="image-carousel">
+                                    ${product.image_urls.map(url => `<img src="${url}" alt="Product Image">`).join('')}
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    productsContainer.appendChild(productCard);
+                });
+            }
+        });
     </script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
