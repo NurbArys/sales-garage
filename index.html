@@ -8,6 +8,7 @@
     <style>
         .product-card {
             margin-bottom: 20px;
+            cursor: pointer;
         }
         .image-carousel {
             display: flex;
@@ -93,6 +94,7 @@
                 products.forEach(product => {
                     const productCard = document.createElement('div');
                     productCard.className = 'col-md-4 product-card';
+                    productCard.onclick = () => openProductPage(product);
                     console.log('Rendering product:', product);
                     const images = product.image_urls;
                     productCard.innerHTML = `
@@ -110,6 +112,45 @@
                     `;
                     productsContainer.appendChild(productCard);
                 });
+            }
+
+            // Function to open a product page with detailed information
+            function openProductPage(product) {
+                const productPage = window.open('', '_blank');
+                productPage.document.write(`
+                    <!DOCTYPE html>
+                    <html lang="en">
+                    <head>
+                        <meta charset="UTF-8">
+                        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                        <title>${product.name}</title>
+                        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+                        <style>
+                            .image-carousel {
+                                display: flex;
+                                overflow-x: auto;
+                                margin-bottom: 20px;
+                            }
+                            .image-carousel img {
+                                max-width: 150px;
+                                margin-right: 10px;
+                            }
+                        </style>
+                    </head>
+                    <body>
+                        <div class="container mt-5">
+                            <h1>${product.name}</h1>
+                            <div class="image-carousel">
+                                ${product.image_urls.length > 0 ? product.image_urls.map(url => `<img src="${url}" alt="Product Image">`).join('') : '<p>No images available</p>'}
+                            </div>
+                            <p><strong>Description:</strong> ${product.description}</p>
+                            <p><strong>Category:</strong> ${product.category}</p>
+                            <p><strong>Price:</strong> ${product.price}</p>
+                        </div>
+                        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+                    </body>
+                    </html>
+                `);
             }
         });
     </script>
