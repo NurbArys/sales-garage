@@ -50,5 +50,15 @@
             "https://cdn.jsdelivr.net/gh/NurbArys/Sales-Garage/images/AgACAgIAAxkBAAICDGc1CTmmfTzeBAfq-WdlRG0_sakIAAIx6DEbytWoSQZxflAdHFptAQADAgADbQADNgQ.jpg",
             "https://cdn.jsdelivr.net/gh/NurbArys/Sales-Garage/images/AgACAgIAAxkBAAICCmc1CTB7LtTqxz2KmW8H0l8zgNAjAAIw6DEbytWoSSfc1wV5xa3KAQADAgADeQADNgQ.jpg"
         ]
+    },
+    {
+        "id": 2326,
+        "name": "Velo",
+        "description": "new velo pink",
+        "category": "sport",
+        "price": "23245",
+        "image_urls": [
+            "https://cdn.jsdelivr.net/gh/NurbArys/Sales-Garage/images/AgACAgIAAxkBAAICCmc1CTB7LtTqxz2KmW8H0l8zgNAjAAIw6DEbytWoSSfc1wV5xa3KAQADAgADeQADNgQ.jpg"
+        ]
     }
 ]
