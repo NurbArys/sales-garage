@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const searchButton = document.getElementById('searchButton');
 
     // Fetch products data from GitHub
-   fetch('https://cdn.jsdelivr.net/gh/NurbArys/sales-garage/products.json?timestamp=' + new Date().getTime())
+   fetch('https://cdn.jsdelivr.net/gh/NurbArys/sales-Garage/products.json?timestamp=' + new Date().getTime())
         .then(response => {
             if (!response.ok) {
                 throw new Error(`HTTP error! Status: ${response.status}`);
