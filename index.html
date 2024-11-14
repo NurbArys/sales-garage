@@ -46,5 +46,60 @@
             console.log('DOM fully loaded and parsed');
         });
     </script>
+    <script>
+        // Adding more console logs to debug rendering of products
+        document.addEventListener("DOMContentLoaded", function() {
+            fetch('https://cdn.jsdelivr.net/gh/NurbArys/Sales-Garage/products.json')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! Status: ${response.status}`);
+                    }
+                    return response.json();
+                })
+                .then(products => {
+                    console.log('Products fetched successfully:', products);
+                    renderProducts(products);
+                })
+                .catch(error => {
+                    console.error('Error fetching products:', error);
+                });
+
+            function renderProducts(products) {
+                const productsContainer = document.getElementById('products');
+                productsContainer.innerHTML = '';
+                if (products.length === 0) {
+                    console.log('No products to render');
+                    productsContainer.innerHTML = '<p class="text-warning">No products available for the selected criteria.</p>';
+                    return;
+                }
+                products.forEach(product => {
+                    console.log('Rendering product:', product);
+                    const productCard = document.createElement('div');
+                    productCard.className = 'col-md-4 product-card';
+                    const images = Array.isArray(product.image_urls) ? product.image_urls : [];
+                    productCard.innerHTML = `
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">${product.name}</h5>
+                                <p class="card-text"><strong>Product ID:</strong> ${product.id}</p>
+                                <p class="card-text">${product.description}</p>
+                                <p class="card-text"><strong>Category:</strong> ${product.category}</p>
+                                <p class="card-text"><strong>Price:</strong> ${product.price}</p>
+                                <div class="image-carousel">
+                                    ${images.length > 0 ? images.map(url => `<img src="${url}" alt="Product Image">`).join('') : '<p>No images available</p>'}
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    productsContainer.appendChild(productCard);
+                });
+            }
+        });
+    </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            console.log('DOM fully loaded and parsed');
+        });
+    </script>
 </body>
 </html>
