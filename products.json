@@ -29,5 +29,15 @@
             "https://cdn.jsdelivr.net/gh/NurbArys/Sales-Garage/images/AgACAgIAAxkBAAICjWc2NWKHgFgS77G3F-gk3HDqfnerAAJe5jEbWZywSTvLP48n3zQtAQADAgADbQADNgQ.jpg",
             "https://cdn.jsdelivr.net/gh/NurbArys/Sales-Garage/images/AgACAgIAAxkBAAICj2c2NWg83TXGAun0CtjxHq6KO9tOAAJf5jEbWZywSfMx9onfnwSLAQADAgADeQADNgQ.jpg"
         ]
+    },
+    {
+        "id": 6259,
+        "name": "Kukla lLL",
+        "description": "New",
+        "category": "Toys",
+        "price": "66844",
+        "image_urls": [
+            "https://cdn.jsdelivr.net/gh/NurbArys/Sales-Garage/images/AgACAgIAAxkBAAICoGc2OYD15vE23V-z4iu-69quLjcnAAJ_5jEbWZywSbyWRVCf56mpAQADAgADbQADNgQ.jpg"
+        ]
     }
 ]
