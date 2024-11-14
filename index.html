@@ -44,7 +44,7 @@
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             console.log('DOM fully loaded and parsed');
-            fetch('https://raw.githubusercontent.com/NurbArys/sales-Garage/main/products.json?timestamp=' + new Date().getTime())
+            fetch('https://raw.githubusercontent.com/NurbArys/sales-garage/main/products.json?timestamp=' + new Date().getTime())
                 .then(response => {
                     if (!response.ok) {
                         throw new Error(`HTTP error! Status: ${response.status}`);
