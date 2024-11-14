@@ -14,7 +14,7 @@
         }
     </style>
 </head>
-<body style="background-color: #f5f5dc;">
+<body style="background-color: #f7f7f7;">
     <div class="container mt-5">
         <h1 class="text-center mb-4">Online Web Shop</h1>
         
@@ -44,7 +44,7 @@
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             console.log('DOM fully loaded and parsed');
-            fetch('https://cdn.jsdelivr.net/gh/NurbArys/sales-Garage/products.json?timestamp=' + new Date().getTime())
+            fetch('https://cdn.jsdelivr.net/gh/NurbArys/Sales-Garage/products.json?timestamp=' + new Date().getTime())
                 .then(response => {
                     if (!response.ok) {
                         throw new Error(`HTTP error! Status: ${response.status}`);
@@ -77,7 +77,7 @@
                     productCard.className = 'col-md-4 product-card';
                     const images = Array.isArray(product.image_urls) ? product.image_urls : [];
                     productCard.innerHTML = `
-                        <div class="card">
+                        <div class="card" style="background-color: #e0e0e0;">
                             <img src="${images[0] || 'https://via.placeholder.com/150'}" class="card-img-top" alt="Product Image">
                             <div class="card-body">
                                 <h5 class="card-title">${product.name}</h5>
