@@ -41,14 +41,10 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
     <script src="script.js"></script>
+    
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             console.log('DOM fully loaded and parsed');
-        });
-    </script>
-    <script>
-        // Adding more console logs to debug rendering of products
-        document.addEventListener("DOMContentLoaded", function() {
             fetch('https://cdn.jsdelivr.net/gh/NurbArys/Sales-Garage/products.json')
                 .then(response => {
                     if (!response.ok) {
@@ -79,15 +75,13 @@
                     const images = Array.isArray(product.image_urls) ? product.image_urls : [];
                     productCard.innerHTML = `
                         <div class="card">
+                            <img src="${images[0] || 'https://via.placeholder.com/150'}" class="card-img-top" alt="Product Image">
                             <div class="card-body">
                                 <h5 class="card-title">${product.name}</h5>
                                 <p class="card-text"><strong>Product ID:</strong> ${product.id}</p>
                                 <p class="card-text">${product.description}</p>
                                 <p class="card-text"><strong>Category:</strong> ${product.category}</p>
                                 <p class="card-text"><strong>Price:</strong> ${product.price}</p>
-                                <div class="image-carousel">
-                                    ${images.length > 0 ? images.map(url => `<img src="${url}" alt="Product Image">`).join('') : '<p>No images available</p>'}
-                                </div>
                             </div>
                         </div>
                     `;
@@ -96,10 +90,6 @@
             }
         });
     </script>
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            console.log('DOM fully loaded and parsed');
-        });
-    </script>
+    
 </body>
 </html>
