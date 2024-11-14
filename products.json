@@ -18,5 +18,16 @@
         "image_urls": [
             "https://cdn.jsdelivr.net/gh/NurbArys/Sales-Garage/images/AgACAgIAAxkBAAICbWc1MKemd-Zodtx2YykD1K2EkHVJAAIm4TEbWZyoSS3mlmDFE7rQAQADAgADeQADNgQ.jpg"
         ]
+    },
+    {
+        "id": 3666,
+        "name": "Kukla",
+        "description": "New Kukla 777",
+        "category": "Toys",
+        "price": "23556",
+        "image_urls": [
+            "https://cdn.jsdelivr.net/gh/NurbArys/Sales-Garage/images/AgACAgIAAxkBAAICjWc2NWKHgFgS77G3F-gk3HDqfnerAAJe5jEbWZywSTvLP48n3zQtAQADAgADbQADNgQ.jpg",
+            "https://cdn.jsdelivr.net/gh/NurbArys/Sales-Garage/images/AgACAgIAAxkBAAICj2c2NWg83TXGAun0CtjxHq6KO9tOAAJf5jEbWZywSfMx9onfnwSLAQADAgADeQADNgQ.jpg"
+        ]
     }
 ]
