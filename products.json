@@ -52,5 +52,18 @@
         "image_urls": [
             "https://cdn.jsdelivr.net/gh/NurbArys/Sales-Garage/images/AgACAgIAAxkBAAIC42c2UvFNZxPUcQzz42zyVfbgsQV-AAJE5zEbWZywSehYYIWzVuvsAQADAgADeAADNgQ.jpg"
         ]
+    },
+    {
+        "id": 9970,
+        "user_id": 180657740,
+        "username": "DelicateDrone",
+        "name": "Lotok",
+        "description": "Lotok domik 2",
+        "category": "Pets",
+        "price": "232455",
+        "phone_number": "+722262642",
+        "image_urls": [
+            "https://cdn.jsdelivr.net/gh/NurbArys/Sales-Garage/images/AgACAgIAAxkBAAIDTGc2cr2N44KkoK5biRosQPxE9f2RAAKj5zEbWZywSWl4QK-D7dFPAQADAgADbQADNgQ.jpg"
+        ]
     }
 ]
